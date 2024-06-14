@@ -12,6 +12,7 @@ import 'package:somaa/screens/home/home.dart';
 // import 'package:system_auth/screens/authenticate/sign_in.dart';
 // import 'package:system_auth/screens/home/home.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:somaa/screens/home/profile/profile.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({Key? key}) : super(key: key);
@@ -123,7 +124,7 @@ class _LoginScreenState extends State<LogIn> with SingleTickerProviderStateMixin
 
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const Home()),
+        MaterialPageRoute(builder: (context) => const UserProfile1()),
       );
     } else {
       showDialog(
@@ -159,6 +160,8 @@ class _LoginScreenState extends State<LogIn> with SingleTickerProviderStateMixin
         final data = jsonDecode(response.body);
         setState(() {
           // Handle the data received from the profile endpoint
+          // You can access the data using the 'data' variable
+          // For example, you can store the data in a variable or update the UI
         });
       } else {
         setState(() {

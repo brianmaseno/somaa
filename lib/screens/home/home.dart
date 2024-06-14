@@ -4,12 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:somaa/providers/subject_provider.dart';
 import 'package:somaa/providers/user_provider.dart';
 import 'package:somaa/screens/home/mathpage.dart';
+import 'package:somaa/screens/home/profile/profile.dart';
 import 'package:somaa/screens/home/profile/userprofile.dart';
-// import 'package:system_auth/providers/user_provider.dart';
-// import 'package:system_auth/providers/subject_provider.dart';
-// import 'package:system_auth/screens/home/profile/userprofile.dart';
-// import 'package:system_auth/screens/home/mathpage.dart';
-// import 'package:system_auth/models/subject_model.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -41,26 +37,20 @@ class Home extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 30.0),
                 child: Consumer<UserProvider>(
                   builder: (context, userProvider, child) {
-                    if (userProvider.user != null) {
-                      String initials = userProvider.user!.username.substring(0, 2).toUpperCase();
-                      return GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const UserProfile()),
-                          );
-                        },
-                        child: CircleAvatar(
-                          backgroundColor: Colors.blueAccent,
-                          child: Text(
-                            initials,
-                            style: const TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      );
-                    } else {
-                      return const CircularProgressIndicator();
-                    }
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const UserProfile1()),
+                        );
+                      },
+                      child: CircleAvatar(
+                        backgroundColor: Colors.blueAccent,
+                        child: userProvider.user != null
+                            ? const Icon(Icons.person, color: Colors.white)
+                            : const CircularProgressIndicator(),
+                      ),
+                    );
                   },
                 ),
               ),

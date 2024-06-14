@@ -5,6 +5,7 @@ import 'package:somaa/providers/auth_provider.dart';
 import 'package:somaa/providers/subject_provider.dart';
 import 'package:somaa/providers/user_provider.dart';
 import 'package:somaa/screens/authenticate/log_in.dart';
+import 'package:somaa/screens/authenticate/sign_in.dart';
 import 'package:somaa/screens/home/home.dart';
 import 'package:somaa/screens/home/profile/userprofile.dart';
 // import 'package:system_auth/providers/auth_provider.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: UserProfile(),
+        home: LogIn(),
       ),
     );
   }
