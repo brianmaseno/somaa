@@ -1,15 +1,9 @@
-// lib/screens/home/home.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:somaa/providers/subject_provider.dart';
 import 'package:somaa/providers/user_provider.dart';
-import 'package:somaa/screens/home/mathpage.dart';
 import 'package:somaa/screens/home/profile/userprofile.dart';
-// import 'package:system_auth/providers/user_provider.dart';
-// import 'package:system_auth/providers/subject_provider.dart';
-// import 'package:system_auth/screens/home/profile/userprofile.dart';
-// import 'package:system_auth/screens/home/mathpage.dart';
-// import 'package:system_auth/models/subject_model.dart';
+import 'package:somaa/screens/home/mathpage.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -95,10 +89,12 @@ class _HomeBodyState extends State<HomeBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<SubjectProvider>(
-      builder: (context, subjectProvider, child) {
-        if (subjectProvider.isLoading) {
+    return Consumer2<UserProvider, SubjectProvider>(
+      builder: (context, userProvider, subjectProvider, child) {
+        if (userProvider.isLoading || subjectProvider.isLoading) {
           return const Center(child: CircularProgressIndicator());
+        } else if (userProvider.errorMessage.isNotEmpty) {
+          return Center(child: Text(userProvider.errorMessage));
         } else if (subjectProvider.errorMessage.isNotEmpty) {
           return Center(child: Text(subjectProvider.errorMessage));
         } else if (subjectProvider.subjects.isEmpty) {
